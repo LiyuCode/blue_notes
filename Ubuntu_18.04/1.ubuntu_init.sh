@@ -297,9 +297,9 @@ add_go_lang() {
 	aria2c --dir=$PKG_DIR -c $GO_LANG_DL_LINK
 	sudo tar -C /usr/local -xzf $PKG_DIR/$GO_PKG
 	sudo bash -c "echo 'export PATH=\$PATH:/usr/local/go/bin' > $BM_GO_PROF"
-  sudo bash -c "echo 'export GOPATH=$HOME/go' > $BM_GO_PROF"
+  sudo bash -c "echo 'export GOPATH=$HOME/go' >> $BM_GO_PROF"
 
-	source $BM_GO_PROF	
+	source $BM_GO_PROF
 	#rm $GO_PKG
 	print_green ">>> GO Lang Installation DONE."
 	print_green "    By default, it installed to /usr/local/go"
