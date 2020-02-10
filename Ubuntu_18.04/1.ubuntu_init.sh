@@ -300,6 +300,8 @@ add_go_lang() {
   sudo bash -c "echo 'export GOPATH=$HOME/go' >> $BM_GO_PROF"
 
 	source $BM_GO_PROF
+
+  mkdir -p $GOPATH
 	#rm $GO_PKG
 	print_green ">>> GO Lang Installation DONE."
 	print_green "    By default, it installed to /usr/local/go"
