@@ -23,7 +23,7 @@ BM_CUDA_PROFILE=/etc/profile.d/bm_cuda.sh
 BM_RUST_PROF=/etc/profile.d/bm_rust.sh
 
 # GO Language 
-GO_PKG=go1.13.7.linux-amd64.tar.gz
+GO_PKG=go1.13.8.linux-amd64.tar.gz
 #GO_LANG_DL_LINK=https://dl.google.com/go/$GO_PKG
 GO_LANG_DL_LINK=https://studygolang.com/dl/golang/$GO_PKG
 BM_GO_PROF=/etc/profile.d/bm_go.sh
@@ -189,7 +189,7 @@ add_nv_driver() {
   sudo add-apt-repository -y ppa:graphics-drivers/ppa
   ubuntu-drivers devices
   sudo apt purge nvidia*
-  sudo apt install -y nvidia-driver-435
+  sudo apt install -y nvidia-driver-440
 
 }
 
