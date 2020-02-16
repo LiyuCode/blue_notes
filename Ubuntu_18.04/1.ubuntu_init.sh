@@ -40,6 +40,7 @@ CONDA_DL_LINK=https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/$CONDA_PKG
 
 
 #! Change the following variables with caution
+## check the CUDA version supported by Tensorflow first: https://www.tensorflow.org/install/gpu
 CUDA_REPO_LINK=http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/$CUDA_REPO_PKG
 CUDA_CUDNN_LINK=https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/$CUDA_CUDNN_REPO_PKG
 BM_OPTION_CUDA_TOOLKITPATH=/usr/local/cuda-10.1 # the default install dir of cuda toolkit
