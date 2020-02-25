@@ -99,6 +99,8 @@ libxml2-dev
 libxmu-dev
 libxslt1-dev
 libva-dev
+libusb-dev
+libreadline-dev
 mesa-common-dev
 protobuf-compiler
 qt5-default
