@@ -10,6 +10,7 @@ filezilla
 fonts-dejavu
 fonts-wqy-microhei
 fonts-wqy-zenhei
+exfat-utils
 git
 graphviz
 language-pack-gnome-zh-hans
