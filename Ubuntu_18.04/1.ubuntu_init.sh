@@ -296,6 +296,10 @@ add_rust_lang() {
 add_go_lang() {
 	print_green ">>> Task: Install GO Lang ..."
 	aria2c --dir=$PKG_DIR -c $GO_LANG_DL_LINK
+
+  # If there is a GO in /usr/local/go , remove it, to avoid version conflicts
+  [ -d /usr/local/go ] && sudo rm -rf /usr/local/go
+
 	sudo tar -C /usr/local -xzf $PKG_DIR/$GO_PKG
 	sudo bash -c "echo 'export PATH=\$PATH:/usr/local/go/bin' > $BM_GO_PROF"
   sudo bash -c "echo 'export GOPATH=$HOME/go' >> $BM_GO_PROF"
