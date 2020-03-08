@@ -24,6 +24,7 @@ BM_RUST_PROF=/etc/profile.d/bm_rust.sh
 
 # GO Language 
 GO_PKG=go1.14.linux-amd64.tar.gz
+#GO_PKG=go1.13.8.linux-amd64.tar.gz
 #GO_LANG_DL_LINK=https://dl.google.com/go/$GO_PKG
 GO_LANG_DL_LINK=https://studygolang.com/dl/golang/$GO_PKG
 BM_GO_PROF=/etc/profile.d/bm_go.sh
@@ -216,6 +217,9 @@ add_cuda_cudnn() {
   sudo apt install -y cuda="10.1.243-1"
   sudo apt-mark hold cuda
   #sudo apt install -y cuda-drivers
+
+ # sudo apt install -y libcublas-dev="10.1.0.105-1"
+ # sudo apt-mark hold libcublas-dev
 
   sudo apt install -y libcudnn7="7.6.4.38-1+cuda10.1"
   sudo apt-mark hold libcudnn7
