@@ -292,7 +292,7 @@ add_rust_lang() {
 	print_green ">>> Rust Lang Installation DONE"
 	print_green "    Here is 'rustc --version'"
 	rustc --version
-        print_green ">>> To apply: source $BM_RUST_PROF"
+  print_green ">>> To apply: source $BM_RUST_PROF"
 
 } 
 

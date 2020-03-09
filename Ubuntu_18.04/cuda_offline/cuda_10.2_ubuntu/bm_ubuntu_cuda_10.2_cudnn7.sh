@@ -44,7 +44,7 @@ export BM_CUDNN_DOC_DEB=libcudnn7-doc_7.6.5.32-1+cuda10.2_amd64.deb
 
 # modifiable, variables
 export BM_TEMP_FOLDER=`pwd`/bm_temp_`date '+%Y%m%d-%H%M%S-%N-%Z'`
-export BM_OPTION_CUDA_TOOLKITPATH=/usr/local/cuda-10.1
+export BM_OPTION_CUDA_TOOLKITPATH=/usr/local/cuda-10.2
 
 echoNotify ">>>BM: copy cuDNN Library to $BM_OPTION_CUDA_TOOLKITPATH..."
 if [ -f "$BM_CUDNN_ZIP" ]; then
