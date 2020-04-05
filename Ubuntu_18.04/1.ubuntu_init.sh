@@ -1,6 +1,5 @@
-
 # For Ubuntu 18.04 LTS
-# 2019.12.08
+# 2020.04.05
 
 PKG_DIR=$HOME/.ubuntu_init.cache
 
@@ -23,7 +22,7 @@ BM_CUDA_PROFILE=/etc/profile.d/bm_cuda.sh
 BM_RUST_PROF=/etc/profile.d/bm_rust.sh
 
 # GO Language 
-GO_PKG=go1.14.linux-amd64.tar.gz
+GO_PKG=go1.14.1.linux-amd64.tar.gz
 #GO_PKG=go1.13.8.linux-amd64.tar.gz
 #GO_LANG_DL_LINK=https://dl.google.com/go/$GO_PKG
 GO_LANG_DL_LINK=https://studygolang.com/dl/golang/$GO_PKG
@@ -327,7 +326,7 @@ start_menu() {
     print_green "========================="
     print_green " A script to build a dev env on a fresh Ubuntu machine"
     print_green " Author: Alex"
-    print_green " Tested on Ubuntu 19.04"
+    print_green " Tested on Ubuntu 18.04.04"
     print_green " This machine is: `lsb_release -rs`"
     print_green " Web:    L.Cai@BlueMatrix.AI"
     print_green "========================="
