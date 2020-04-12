@@ -119,6 +119,8 @@ add_common_config() {
   sudo apt-get update
   sudo apt-get upgrade -y
 
+  #sudo apt-mark hold linux-image-generic linux-headers-generic
+
   print_green ">>> 5. Grant user USB port access, for USB debugging. Effective after reboot"
   sudo usermod -a -G dialout $USER
 
