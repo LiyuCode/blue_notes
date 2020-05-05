@@ -128,9 +128,13 @@ add_common_config() {
   gsettings set org.gnome.desktop.interface enable-animations false
 
   print_green ">>> 7. If you installed an Windows OS on this computer too,"
-  print_green "    run 'r' to make "
-  print_green "    Ubuntu 18.04 treat BIOS time as local time rather than UTC time,"
+  print_green "    run 'timedatectl set-local-rtc 1' or "
+  print_green "    set 'UTC=no' in '/etc/default/rcS' to make Ubuntu 18.04 "
+  print_green "    treat BIOS time as local time rather than UTC time,"
   print_green "    same as the Windows did by default."
+
+  print_green ">>> 8. To set Bash as default console, choose 'No' ..."
+  sudo dpkg-reconfigure dash
 }
 
 
