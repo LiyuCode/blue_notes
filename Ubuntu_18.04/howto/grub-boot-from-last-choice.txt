@@ -1,0 +1,13 @@
+Platform: Ubuntu 18.04.04 LTS
+
+# Change/add the following values in `/etc/default/grub`:
+
+```bash
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+```
+
+Then, 
+```bash
+sudo update-grub
+```
