@@ -1,0 +1,53 @@
+# Env:
+## Software:
+  - OS: RHEL 8.3
+## Reference:
+  - https://linuxconfig.org/how-to-install-docker-in-rhel-8
+
+
+# Add Docker official repo
+```
+sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+```
+
+To list available version, type:
+```
+sudo dnf list docker-ce --showduplicates | sort -r
+```
+
+This outputs:
+```
+[u@r8 ~]$ sudo dnf list docker-ce --showduplicates | sort -r
+[sudo] password for bmx:
+Updating Subscription Management repositories.
+Last metadata expiration check: 0:28:34 ago on Wed 03 Mar 2021 04:04:39 PM CST.
+Installed Packages
+docker-ce.x86_64               3:20.10.5-3.el8                 docker-ce-stable
+docker-ce.x86_64               3:20.10.5-3.el8                 @docker-ce-stable
+docker-ce.x86_64               3:20.10.4-3.el8                 docker-ce-stable
+docker-ce.x86_64               3:20.10.3-3.el8                 docker-ce-stable
+```
+
+# Install the latest version
+```
+sudo dnf install --nobest docker-ce --allowerasing
+```
+
+# Enable auto-activation on system boot
+```
+sudo systemctl enable --now docker
+systemctl is-active docker
+systemctl is-enabled docker
+sudo reboot
+```
+
+# TODO: docker-compose
+
+
+# TODO: firewall setting
+
+
+# Other refernces:
+  - https://www.digitalocean.com/community/tutorials/how-to-configure-the-linux-firewall-for-docker-swarm-on-centos-7
+  - https://www.ringingliberty.com/2020/12/17/using-docker-with-firewalld/
+  
