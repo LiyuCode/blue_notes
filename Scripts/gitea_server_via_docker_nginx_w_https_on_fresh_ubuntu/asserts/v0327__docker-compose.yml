@@ -1,0 +1,106 @@
+version: "3"
+
+networks:
+  gitea:
+    external: false
+
+volumes:
+  gitea:
+    driver: local
+
+services:
+  server:
+    image: gitea/gitea:1.16.5
+    # 运行Gitea服务的容器名称
+    container_name: ibb_gitea
+    environment:
+      # 基本信息
+      ## Gitea网站上显示的站点名
+      - APP_NAME="Gitea:IBB"
+      ## Gitea服务启动的模式，默认：`XXX`
+      ### dev: 调试模式
+      ### prod: 生产模式
+      ### test: 测试模式
+      - RUN_MODE=prod
+      # ibb_gitea 内执行各种操作的用户的ID，默认：`localhost:3306`
+      - USER_UID=1201
+      # 上述用户所在的用户组的ID，默认：`localhost:3306`
+      - USER_GID=1200
+      # 上述用户的用户名，默认：`git`      
+      - USER=gitea_admin
+
+      # [database]:https://docs.gitea.io/en-us/config-cheat-sheet/#database-database
+      ## 要使用的数据库的类型，默认：`localhost:3306`
+      ### 可选值有：mysql，postgres，mssql，sqlite3
+      - GITEA__database__DB_TYPE=sqlite3
+      ## 仅对SQLite3有效。数据库文件的路径：
+      - GITEA__database__DB_PATH="/data/gitea/gitea.db"
+
+      # [repository]
+      - GITEA__repository__DEFAULT_PRIVATE=private
+
+      # [Server]:https://docs.gitea.io/en-us/config-cheat-sheet/#server-server
+      - GITEA__server__DOMAIN=do.ibrubru.cn
+      ## 代码仓库页面里，提示用户Git Clone over SSH 的链接时，显示的域名
+      - GITEA__server__SSH_DOMAIN=do.ibrubru.cn
+      - GITEA__server__HTTP_PORT=3000
+      - GITEA__server__ROOT_URL=https://do.ibrubru.cn/
+      ## 是否禁用Git Clone over SSH，默认：`false`
+      ## false:提供SSH访问功能
+      ## true: 禁用该功能。注：此时应同时将`SSH_PORT`设为0
+      - GITEA__server__DISABLE_SSH=true
+      # 代码仓库页面里，提示用户Git Clone over SSH 的链接时，显示的端口，默认：`2222`
+      - GITEA__server__SSH_PORT=0
+      # ibb_gitea本身运行时对Git Clone over SSH请求所实际监听的端口，默认：`22`
+      - GITEA__server__SSH_LISTEN_PORT=22
+      - GITEA__server__OFFLINE_MODE=false
+      - GITEA__server__LANDING_PAGE=home
+
+      # [Service]
+      - GITEA__service__DEFAULT_USER_IS_RESTRICTED=true
+      - GITEA__service__OFFLINE_MODE=true
+      ## 是否禁用用户注册功能，默认：`false`
+      ### false: 会在首页提供用户注册功能
+      ### true:  仅能通过管理员来增加用户
+      - GITEA__service__DISABLE_REGISTRATION=true
+      ## 是否需要登录才能查看任何页面，默认：`false`
+      ### false: 未登陆前，能看到站点首页和公开的用户以及代码仓库清单
+      ### true:  未登陆前，上述公开的信息也看不到
+      - GITEA__service__REQUIRE_SIGNIN_VIEW=true
+      - GITEA__service__REGISTER_EMAIL_CONFIRM=true
+      - GITEA__service__ENABLE_NOTIFY_MAIL=true
+      - GITEA__service__ALLOW_ONLY_EXTERNAL_REGISTRATION=false
+      - GITEA__service__ENABLE_CAPTCHA=false
+      - GITEA__service__DEFAULT_KEEP_EMAIL_PRIVATE=false
+      - GITEA__service__DEFAULT_ALLOW_CREATE_ORGANIZATION=true
+      - GITEA__service__DEFAULT_ENABLE_TIMETRACKING=true
+      - GITEA__service__NO_REPLY_ADDRESS=noreply.do.ibrubru.cn
+      - GITEA__service__DEFAULT_KEEP_EMAIL_PRIVATE=true
+
+      # [Admin]
+      - GITEA__admin__DEFAULT_EMAIL_NOTIFICATIONS=enabled
+      - GITEA__admin__DISABLE_REGULAR_ORG_CREATION=false
+
+      # [Security]
+      - GITEA__security__LOGIN_REMEMBER_DAYS=1
+      - GITEA__security__PASSWORD_HASH_ALGO=pbkdf2
+
+      # [OpenID]
+      - GITEA__openid__ENABLE_OPENID_SIGNIN=false
+      - GITEA__openid__ENABLE_OPENID_SIGNUP=false
+
+      # [Picture]
+      - GITEA__picture__DISABLE_GRAVATAR=true
+      - GITEA__picture__ENABLE_FEDERATED_AVATAR=false
+
+    # 设置ibb_gitea容器自动重启
+    restart: always
+    networks:
+      - gitea
+    volumes:
+      - /docker_data/ibb_gitea/data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "33000:3000"
+      - "2222:22"
